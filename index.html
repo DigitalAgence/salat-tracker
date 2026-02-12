@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00ffae" />
+    <title>Salat Tracker France</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🕌 Salat Tracker</h1>
+      <div class="greg-date" id="gregDate">Date : --</div>
+
+      <input
+        type="text"
+        id="citySearch"
+        placeholder="Rechercher une ville..."
+      />
+      <ul id="cityList"></ul>
+
+      <div id="selectedCity"></div>
+      <div id="prayers"></div>
+
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div id="stats"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((reg) => console.log("Service Worker enregistré", reg))
+            .catch((err) => console.log("Service Worker erreur", err));
+        });
+      }
+    </script>
+  </body>
+</html>
